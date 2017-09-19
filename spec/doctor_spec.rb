@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe("Doctor") do
-  let(:doctor) {Doctor.new({:name => "Dr.Smith", :doctor_id => nil, :speciality => "Pediatrician"})}
+  let(:doctor) {Doctor.new({:name => "Dr.Smith", :id => nil, :speciality => "Pediatrician"})}
   it("creates instance of doctor with Doctor class when given name and speciality") do
     expect(doctor.name).to eq ("Dr.Smith")
   end
@@ -18,5 +18,4 @@ describe("Doctor") do
       expect(Doctor.all()).to(eq([doctor]))
     end
   end
-
 end
