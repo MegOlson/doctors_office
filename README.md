@@ -22,3 +22,6 @@
 * Program returns list of patients.
   * Example Input: Patient.all()
   * Example Output: [patient1, patient2]
+* Program returns list of patients.
+  * Example Input: Patient.all()
+  * Example Output: [patient1, patient2]
