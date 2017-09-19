@@ -26,4 +26,10 @@ describe("Patient") do
       expect(patient1).to(eq(patient2))
     end
   end
+
+  # describe("assign") do
+  #   it("assigns doctor id to patient")do
+  #     expect()
+  #   end
+  # end
 end

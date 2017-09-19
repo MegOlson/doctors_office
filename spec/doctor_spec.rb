@@ -18,4 +18,21 @@ describe("Doctor") do
       expect(Doctor.all()).to(eq([doctor]))
     end
   end
+
+  describe(".find") do
+    it("returns doctor when given its ID") do
+      test_doctor1 = Doctor.new({:name => "Dr. Smith", :id => nil, :speciality => "Pediatrition"})
+      test_doctor1.save()
+      test_doctor2 = Doctor.new({:name => "Dr. Orion", :id => nil, :speciality => "Oncologist"})
+      test_doctor2.save()
+      expect(Doctor.find(test_doctor1.id)).to(eq(test_doctor1))
+    end
+  end
+
+  # describe("patients") do
+  #   it("returns list of patients with assigned doctor id") do
+  #     expect()
+  #   end
+  # end
+
 end

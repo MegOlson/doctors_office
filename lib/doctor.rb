@@ -19,6 +19,16 @@ class Doctor
     doctors
   end
 
+  def self.find(id)
+    found_doctor = nil
+    Doctor.all().each() do |doctor|
+      if doctor.id().==(id)
+        found_doctor = doctor
+      end
+    end
+    found_doctor
+  end
+
   def save
     result = DB.exec("INSERT INTO doctors (name, speciality) VALUES ('#{@name}', '#{@speciality}') RETURNING id;")
     @id = result.first().fetch("id").to_i
