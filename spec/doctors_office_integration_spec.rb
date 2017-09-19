@@ -13,3 +13,14 @@ describe('adding a new doctor', {:type => :feature}) do
     expect(page).to have_content('Success!')
   end
 end
+
+describe('adding a new patient', {:type => :feature}) do
+  it('allows a user to add a new patient to the list') do
+    visit('/')
+    click_link('Add Patient')
+    fill_in('patient_name', :with =>'Suzie')
+    fill_in('birthday', :with =>'2004-04-20')
+    click_button('Add New Patient')
+    expect(page).to have_content('Success!')
+  end
+end

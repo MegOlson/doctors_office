@@ -11,24 +11,20 @@ get('/') do
   erb(:index)
 end
 
-# get('/doctors') do
-#   @doctors = Doctor.all()
-#   erb(:doctors)
-# end
+get('/doctors') do
+  @doctors = Doctor.all()
+  erb(:doctors)
+end
 
 get('/doctor/new') do
   erb(:doctor_form)
 end
 
-get('/patient/new') do
-  erb(:patient_form)
+get('/doctors/:id') do
+  @doctor = Doctor.find(params.fetch("id").to_i())
+  erb(:doctor)
 end
 
-# get('/doctors/:id') do
-#   @doctor = Doctor.find(params.fetch("id").to_i())
-#   erb(:doctors)
-# end
-#
 post('/doctors') do
   doctor_name = params.fetch("doctor_name")
   speciality = params.fetch("speciality")
@@ -36,12 +32,13 @@ post('/doctors') do
   doctor.save()
   erb(:success)
 end
-#
-# post('/patients') do
-#   name = params.fetch("name")
-#   birthday = params.fetch("birthday")
-#   @doctor = Doctor.find(id)
-#   @patient = Patient.new({:name => name, :birthday => birthday, :doctor_id => doctor_id})
-#   @patient.save()
-#   erb(:sucess)
-# end
+
+post('/patients') do
+  patient_name = params.fetch("patient_name")
+  birthday = params.fetch("birthday")
+  doctor_id = params.fetch("doctor_id").to_i
+  @doctor = Doctor.find(doctor_id)
+  @patient = Patient.new({:name => patient_name, :birthday => birthday, :doctor_id => doctor_id})
+  @patient.save()
+  erb(:success)
+end

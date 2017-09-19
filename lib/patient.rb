@@ -1,9 +1,8 @@
 class Patient
-  attr_reader(:name, :id, :birthday, :doctor_id)
+  attr_reader(:name, :birthday, :doctor_id)
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
     @birthday = attributes.fetch(:birthday)
     @doctor_id = attributes.fetch(:doctor_id)
   end
@@ -13,10 +12,9 @@ class Patient
     patients = []
     returned_patients.each() do |patient|
       name = patient.fetch("name")
-      id = patient.fetch("id").to_i
       birthday = patient.fetch("birthday")
       doctor_id = patient.fetch("doctor_id").to_i
-      patients.push(Patient.new({:name => name, :id => id, :birthday => birthday, :doctor_id => doctor_id}))
+      patients.push(Patient.new({:name => name, :birthday => birthday, :doctor_id => doctor_id}))
     end
     patients
   end
@@ -26,7 +24,6 @@ class Patient
   end
 
   def save
-    result = DB.exec("INSERT INTO patients (name, birthday) VALUES ('#{@name}', '#{@birthday}') RETURNING id ;")
-    @id = result.first().fetch("id").to_i
+    result = DB.exec("INSERT INTO patients (name, birthday, doctor_id) VALUES ('#{@name}', '#{@birthday}', #{@doctor_id});")
   end
 end
