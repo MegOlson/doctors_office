@@ -12,4 +12,11 @@ describe("Doctor") do
     end
   end
 
+  describe("#save") do
+    it("saves each doctor and details to database") do
+      doctor.save()
+      expect(Doctor.all()).to(eq([doctor]))
+    end
+  end
+
 end

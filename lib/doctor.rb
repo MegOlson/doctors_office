@@ -12,10 +12,19 @@ class Doctor
     doctors =[]
     returned_doctors.each() do |doctor|
       name = doctor.fetch("name")
-      doctor_id = doctor.fetch("doctor_id").to_i
+      doctor_id = doctor.fetch("id").to_i
       speciality = doctor.fetch("speciality")
       doctors.push(Doctor.new({:name => name, :doctor_id => doctor_id, :speciality => speciality}))
     end
     doctors
+  end
+
+  def save
+    result = DB.exec("INSERT INTO doctors (name, speciality) VALUES ('#{@name}', '#{@speciality}') RETURNING id;")
+    @doctor_id = result.first().fetch("id").to_i
+  end
+
+  def ==(another_doctor)
+    self.name().==(another_doctor.name()).&(self.doctor_id().==(another_doctor.doctor_id()))
   end
 end
