@@ -2,6 +2,7 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/doctor')
 require('./lib/patient')
+require('./lib/speciality')
 also_reload('lib/**/*.rb')
 require("pg")
 
@@ -27,8 +28,10 @@ end
 
 post('/doctors') do
   doctor_name = params.fetch("doctor_name")
-  speciality = params.fetch("speciality")
-  doctor = Doctor.new({:name => doctor_name, :id => nil, :speciality => speciality})
+  speciality_type = params.fetch("speciality")
+  speciality = Speciality.new({:type => speciality_type, :id => nil})
+  speciality.save()
+  doctor = Doctor.new({:name => doctor_name, :id => nil, :spec_id => speciality.id()})
   doctor.save()
   erb(:success)
 end

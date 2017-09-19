@@ -1,10 +1,10 @@
 class Doctor
-  attr_reader(:name, :speciality, :id)
+  attr_reader(:name, :id, :spec_id)
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
-    @speciality = attributes.fetch(:speciality)
     @id = attributes.fetch(:id)
+    @spec_id = attributes.fetch(:spec_id)
   end
 
   def self.all
@@ -13,8 +13,8 @@ class Doctor
     returned_doctors.each() do |doctor|
       name = doctor.fetch("name")
       id = doctor.fetch("id").to_i
-      speciality = doctor.fetch("speciality")
-      doctors.push(Doctor.new({:name => name, :id => id, :speciality => speciality}))
+      spec_id = doctor.fetch("spec_id").to_i
+      doctors.push(Doctor.new({:name => name, :id => id, :spec_id => spec_id}))
     end
     doctors
   end
@@ -30,7 +30,7 @@ class Doctor
   end
 
   def save
-    result = DB.exec("INSERT INTO doctors (name, speciality) VALUES ('#{@name}', '#{@speciality}') RETURNING id;")
+    result = DB.exec("INSERT INTO doctors (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
 

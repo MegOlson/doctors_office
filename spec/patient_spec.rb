@@ -12,12 +12,12 @@ describe("Patient") do
     end
   end
 
-  # describe("#save") do
-  #   it("saves each patient and details to database") do
-  #     patient.save()
-  #     expect(Patient.all()).to(eq([patient]))
-  #   end
-  # end
+  describe("#save") do
+    it("saves each patient and details to database") do
+      patient.save()
+      expect(Patient.all()).to(eq([patient]))
+    end
+  end
 
   describe("#==") do
     it("is the same patient if they have the same name and doctor id") do

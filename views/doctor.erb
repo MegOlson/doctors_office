@@ -13,11 +13,8 @@
   <p>There are no patients on this list.</p>
 <% end %>
 
-<div class="container">
-  <a href="/"><button class="btn">Home</button></a>
-</div>
-
 <form action="/patients" method="post">
+
   <input id="doctor_id" name="doctor_id" type="hidden" value=" <%= @doctor.id() %>">
 
   <label for="patient_name">Name</label>
@@ -27,3 +24,7 @@
   <input id="birthday" name="birthday" type="text">
   <button type="submit">Add New Patient</button>
 </form>
+
+<div class="container">
+  <a href="/"><button class="btn">Home</button></a>
+</div>
