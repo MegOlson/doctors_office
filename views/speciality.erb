@@ -1,0 +1,14 @@
+<h1><%= @speciality.type() %></h1>
+
+<% if @speciality.doctors().any?() %>
+  <h3>Here are all the tasks in this list:</h3>
+
+  <ul>
+    <% @speciality.doctors().each() do |speciality| %>
+      <li> <%= doctor.name() %> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>There are no patients on this list.</p>
+<% end %>

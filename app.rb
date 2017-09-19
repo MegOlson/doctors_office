@@ -45,3 +45,13 @@ post('/patients') do
   @patient.save()
   erb(:success)
 end
+
+get ('/specialities') do
+  @specialities = Speciality.all()
+  erb(:specialities)
+end
+
+post ('/specialities/:id') do
+  @specialities = Speciality.find(params.fetch("id").to_i())
+  erb(:speciality)
+end

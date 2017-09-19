@@ -11,6 +11,17 @@ class Speciality
     @id = result.first().fetch("id").to_i
   end
 
+  def self.all
+    returned_specialities = DB.exec("SELECT * FROM speciality;")
+    specialities = []
+    returned_specialities.each() do |speciality|
+      type = speciality.fetch("type")
+      id = speciality.fetch("id")
+      specialities.push(Speciality.new({:type => type, :id => id}))
+    end
+    specialities
+  end
+
   def doctors
     doctors_list = []
     doctors = DB.exec("SELECT * FROM doctors WHERE spec_id = #{self.id()};")

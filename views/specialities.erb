@@ -1,0 +1,13 @@
+<% if @specialities.any?() %>
+  <h1>Specialities:</h1>
+
+  <ul>
+    <% @specialities.each() do |speciality| %>
+      <li><a href="/specialities/<%= speciality.id() %>"><%= speciality.type() %></a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no specialities, good luck!</p>
+
+<% end %>
