@@ -6,10 +6,10 @@ describe("Doctor") do
     expect(doctor.name).to eq ("Dr.Smith")
   end
 
-  # describe(".all") do
-  #   it("creates instance of doctor with Doctor class when given name and speciality") do
-  #
-  #   end
-  # end
+  describe(".all") do
+    it("is empty at first") do
+      expect(Doctor.all()).to(eq([]))
+    end
+  end
 
 end
