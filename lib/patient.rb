@@ -20,7 +20,7 @@ class Patient
   end
 
   def ==(another_patient)
-    self.name().==(another_patient.name()).&(self.id().==(another_patient.id()))
+    self.name().==(another_patient.name()).&(self.doctor_id().==(another_patient.doctor_id()))
   end
 
   def save
