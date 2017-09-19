@@ -6,11 +6,11 @@ describe("Patient") do
     expect(patient.name).to eq ("Suzie")
   end
 
-  # describe(".all") do
-  #   it("is empty at first") do
-  #     expect(Doctor.all()).to(eq([]))
-  #   end
-  # end
+  describe(".all") do
+    it("is empty at first") do
+      expect(Patient.all()).to(eq([]))
+    end
+  end
   #
   # describe("#save") do
   #   it("saves each doctor and details to database") do
